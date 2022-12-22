@@ -2,11 +2,46 @@ package com.menesdurak.virtualcrypto.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
+import com.menesdurak.virtualcrypto.BuildConfig
 import com.menesdurak.virtualcrypto.R
+import com.menesdurak.virtualcrypto.data.remote.RetrofitClient
+import com.menesdurak.virtualcrypto.data.remote.api.CryptoApi
+import com.menesdurak.virtualcrypto.data.repository.CryptoRepository
+import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity() {
+
+    private val retrofit: Retrofit by lazy {
+        RetrofitClient.getInstance()
+    }
+    private val cryptoApi: CryptoApi by lazy {
+        retrofit.create(CryptoApi::class.java)
+    }
+    private val cryptoRepository: CryptoRepository by lazy {
+        CryptoRepository(cryptoApi)
+    }
+    private val cryptoViewModel: CryptoViewModel by viewModels {
+        ViewModelFactory(cryptoRepository)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        cryptoViewModel.getAllCryptos()
+
+        cryptoViewModel.cryptoList.observe(this) {
+            Toast.makeText(this, it.RAW.BTC.USD.PRICE.toString(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, it.RAW.ETH.USD.PRICE.toString(), Toast.LENGTH_SHORT).show()
+            println(it.RAW.BTC.USD.PRICE.toString())
+            println(it.RAW.ETH.USD.PRICE.toString())
+        }
     }
 }
