@@ -10,6 +10,7 @@ import com.menesdurak.virtualcrypto.R
 import com.menesdurak.virtualcrypto.data.remote.RetrofitClient
 import com.menesdurak.virtualcrypto.data.remote.api.CryptoApi
 import com.menesdurak.virtualcrypto.data.repository.CryptoRepository
+import com.menesdurak.virtualcrypto.databinding.ActivityMainBinding
 import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity() {
@@ -27,9 +28,13 @@ class MainActivity : AppCompatActivity() {
         ViewModelFactory(cryptoRepository)
     }
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
     }
 
     override fun onStart() {
