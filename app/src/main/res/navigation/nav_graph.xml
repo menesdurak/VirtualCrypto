@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/currencyChangeFragment">
+
+    <fragment
+        android:id="@+id/currencyChangeFragment"
+        android:name="com.menesdurak.virtualcrypto.ui.CurrencyChangeFragment"
+        android:label="fragment_currency_change"
+        tools:layout="@layout/fragment_currency_change" >
+        <action
+            android:id="@+id/action_currencyChangeFragment_to_cryptoListFragment"
+            app:destination="@id/cryptoListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cryptoListFragment"
+        android:name="com.menesdurak.virtualcrypto.ui.CryptoListFragment"
+        android:label="fragment_crypto_list"
+        tools:layout="@layout/fragment_crypto_list" >
+        <action
+            android:id="@+id/action_cryptoListFragment_to_currencyChangeFragment"
+            app:destination="@id/currencyChangeFragment" />
+    </fragment>
+</navigation>
