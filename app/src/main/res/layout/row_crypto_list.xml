@@ -6,7 +6,8 @@
     android:orientation="horizontal"
     android:layout_margin="4dp"
     android:padding="4dp"
-    android:layout_weight="2">
+    android:layout_weight="2"
+    android:id="@+id/rowLayout">
 
     <TextView
         android:id="@+id/rowSymbol"
