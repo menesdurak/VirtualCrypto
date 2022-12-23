@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.menesdurak.virtualcrypto.data.remote.regres.CryptoResponse
 import com.menesdurak.virtualcrypto.data.repository.CryptoRepository
-import com.menesdurak.virtualcrypto.model.Crypto
 import kotlinx.coroutines.launch
 
 class CryptoViewModel(private val cryptoRepository: CryptoRepository) : ViewModel() {

@@ -12,14 +12,19 @@ import com.menesdurak.virtualcrypto.data.remote.api.CryptoApi
 import com.menesdurak.virtualcrypto.data.remote.regres.CryptoResponse
 import com.menesdurak.virtualcrypto.data.repository.CryptoRepository
 import com.menesdurak.virtualcrypto.databinding.FragmentCryptoListBinding
+import com.menesdurak.virtualcrypto.model.Crypto
+import com.menesdurak.virtualcrypto.model.Usd
 import com.menesdurak.virtualcrypto.ui.viewmodel.CryptoViewModel
 import com.menesdurak.virtualcrypto.ui.viewmodel.ViewModelFactory
 import retrofit2.Retrofit
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CryptoListFragment : Fragment() {
 
     private var _binding: FragmentCryptoListBinding? = null
     private val binding get() = _binding!!
+    private val mutableCryptoList: MutableList<Usd> = mutableListOf()
 
     private val retrofit: Retrofit by lazy {
         RetrofitClient.getInstance()
@@ -50,19 +55,85 @@ class CryptoListFragment : Fragment() {
         cryptoViewModel.getAllCryptos()
 
         cryptoViewModel.cryptoList.observe(viewLifecycleOwner) {
-            binding.tvCryptoSymbol1.text = it.RAW.BTC.USD.FROMSYMBOL
-            binding.tvCryptoSymbol2.text = it.RAW.ETH.USD.FROMSYMBOL
-            binding.tvCryptoSymbol3.text = it.RAW.ADA.USD.FROMSYMBOL
-            binding.tvCryptoSymbol4.text = it.RAW.APE.USD.FROMSYMBOL
-            binding.tvCryptoSymbol5.text = it.RAW.ATOM.USD.FROMSYMBOL
-            binding.tvCryptoSymbol6.text = it.RAW.BNB.USD.FROMSYMBOL
 
-            binding.tvCryptoPrice1.text = it.RAW.BTC.USD.PRICE.toString()
-            binding.tvCryptoPrice2.text = it.RAW.ETH.USD.PRICE.toString()
-            binding.tvCryptoPrice3.text = it.RAW.ADA.USD.PRICE.toString()
-            binding.tvCryptoPrice4.text = it.RAW.APE.USD.PRICE.toString()
-            binding.tvCryptoPrice5.text = it.RAW.ATOM.USD.PRICE.toString()
-            binding.tvCryptoPrice6.text = it.RAW.BNB.USD.PRICE.toString()
+            var crypto = Usd(it.RAW.BTC.USD.FROMSYMBOL,
+                it.RAW.BTC.USD.PRICE,
+                it.RAW.BTC.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.ETH.USD.FROMSYMBOL,
+                it.RAW.ETH.USD.PRICE,
+                it.RAW.ETH.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.BUSD.USD.FROMSYMBOL,
+                it.RAW.BUSD.USD.PRICE,
+                it.RAW.BUSD.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.USDT.USD.FROMSYMBOL,
+                it.RAW.USDT.USD.PRICE,
+                it.RAW.USDT.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.XRP.USD.FROMSYMBOL,
+                it.RAW.XRP.USD.PRICE,
+                it.RAW.XRP.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.USDC.USD.FROMSYMBOL,
+                it.RAW.USDC.USD.PRICE,
+                it.RAW.USDC.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.BNB.USD.FROMSYMBOL,
+                it.RAW.BNB.USD.PRICE,
+                it.RAW.BNB.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.DOGE.USD.FROMSYMBOL,
+                it.RAW.DOGE.USD.PRICE,
+                it.RAW.DOGE.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.LTC.USD.FROMSYMBOL,
+                it.RAW.LTC.USD.PRICE,
+                it.RAW.LTC.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.MATIC.USD.FROMSYMBOL,
+                it.RAW.MATIC.USD.PRICE,
+                it.RAW.MATIC.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.DYDX.USD.FROMSYMBOL,
+                it.RAW.DYDX.USD.PRICE,
+                it.RAW.DYDX.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.ADA.USD.FROMSYMBOL,
+                it.RAW.ADA.USD.PRICE,
+                it.RAW.ADA.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.ETC.USD.FROMSYMBOL,
+                it.RAW.ETC.USD.PRICE,
+                it.RAW.ETC.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.ATOM.USD.FROMSYMBOL,
+                it.RAW.ATOM.USD.PRICE,
+                it.RAW.ATOM.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            crypto = Usd(it.RAW.LINK.USD.FROMSYMBOL,
+                it.RAW.LINK.USD.PRICE,
+                it.RAW.LINK.USD.LASTUPDATE)
+            mutableCryptoList.add(crypto)
+
+            binding.recyclerView.layoutManager = LinearLayoutManager(context)
+            val cryptoAdapter = CryptoListAdapter(mutableCryptoList)
+            binding.recyclerView.adapter = cryptoAdapter
         }
     }
 
