@@ -1,4 +1,4 @@
-package com.menesdurak.virtualcrypto.ui
+package com.menesdurak.virtualcrypto.ui.trade
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,7 +16,7 @@ class CurrencyChangeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentCurrencyChangeBinding.inflate(inflater, container, false)
         val view = binding.root
         return view

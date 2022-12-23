@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/currencyChangeFragment">
+    app:startDestination="@id/cryptoListFragment">
 
     <fragment
         android:id="@+id/currencyChangeFragment"
-        android:name="com.menesdurak.virtualcrypto.ui.CurrencyChangeFragment"
+        android:name="com.menesdurak.virtualcrypto.ui.trade.CurrencyChangeFragment"
         android:label="fragment_currency_change"
         tools:layout="@layout/fragment_currency_change" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/cryptoListFragment"
-        android:name="com.menesdurak.virtualcrypto.ui.CryptoListFragment"
+        android:name="com.menesdurak.virtualcrypto.ui.list.CryptoListFragment"
         android:label="fragment_crypto_list"
         tools:layout="@layout/fragment_crypto_list" >
         <action

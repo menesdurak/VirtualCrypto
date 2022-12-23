@@ -1,4 +1,4 @@
-package com.menesdurak.virtualcrypto.ui
+package com.menesdurak.virtualcrypto.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

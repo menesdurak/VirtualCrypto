@@ -1,4 +1,4 @@
-package com.menesdurak.virtualcrypto.ui
+package com.menesdurak.virtualcrypto.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.menesdurak.virtualcrypto.data.remote.regres.CryptoResponse
 import com.menesdurak.virtualcrypto.data.repository.CryptoRepository
+import com.menesdurak.virtualcrypto.model.Crypto
 import kotlinx.coroutines.launch
 
 class CryptoViewModel(private val cryptoRepository: CryptoRepository) : ViewModel() {
@@ -19,5 +20,4 @@ class CryptoViewModel(private val cryptoRepository: CryptoRepository) : ViewMode
             mutableCryptoList.value = cryptoRepository.getAllCryptos()
         }
     }
-
 }
