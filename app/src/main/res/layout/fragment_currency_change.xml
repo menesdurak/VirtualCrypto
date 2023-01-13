@@ -29,7 +29,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCurrentCurrencyText"
-        tools:text="10000.00" />
+        tools:text="1000.00" />
 
     <Spinner
         android:id="@+id/spinnerCrypto"
