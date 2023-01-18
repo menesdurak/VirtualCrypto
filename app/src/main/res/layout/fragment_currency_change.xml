@@ -6,30 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".ui.trade.CurrencyChangeFragment">
 
-    <TextView
-        android:id="@+id/tvCurrentCurrencyText"
+    <LinearLayout
+        android:id="@+id/lyCryptoList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/etBuy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etBuy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Current Currency"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:text="0"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintEnd_toStartOf="@+id/spinnerCrypto"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuy"
+        android:layout_margin="16dp"/>
 
     <TextView
-        android:id="@+id/tvCurrentCurrency"
+        android:id="@+id/tvMoneySign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCurrentCurrencyText"
-        tools:text="1000.00" />
+        app:layout_constraintStart_toEndOf="@+id/etBuy"
+        app:layout_constraintBottom_toBottomOf="@+id/etBuy"
+        app:layout_constraintTop_toTopOf="@+id/etBuy"
+        android:text="$"
+        android:textSize="16sp"/>
 
     <Spinner
         android:id="@+id/spinnerCrypto"
@@ -38,7 +47,38 @@
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/etBuy"
+        app:layout_constraintBottom_toBottomOf="@+id/etBuy"
+        app:layout_constraintTop_toTopOf="@+id/etBuy"
+        android:layout_margin="16dp"/>
+
+    <Button
+        android:id="@+id/btnBuy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buy"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCurrentCurrency"/>
+        app:layout_constraintEnd_toStartOf="@+id/btnSell"
+        app:layout_constraintBottom_toTopOf="@+id/btnToList"/>
+
+    <Button
+        android:id="@+id/btnSell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sell"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnBuy"
+        app:layout_constraintBottom_toTopOf="@+id/btnToList"/>
+
+    <Button
+        android:id="@+id/btnToList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To Crypto List"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="48dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
