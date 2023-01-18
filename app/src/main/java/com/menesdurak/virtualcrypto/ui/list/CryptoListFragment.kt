@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.menesdurak.virtualcrypto.R
 import com.menesdurak.virtualcrypto.data.remote.RetrofitClient
 import com.menesdurak.virtualcrypto.data.remote.api.CryptoApi
 import com.menesdurak.virtualcrypto.data.remote.regres.CryptoResponse
@@ -64,16 +66,6 @@ class CryptoListFragment : Fragment() {
             crypto = Usd(it.RAW.ETH.USD.FROMSYMBOL,
                 it.RAW.ETH.USD.PRICE,
                 it.RAW.ETH.USD.LASTUPDATE)
-            mutableCryptoList.add(crypto)
-
-            crypto = Usd(it.RAW.BUSD.USD.FROMSYMBOL,
-                it.RAW.BUSD.USD.PRICE,
-                it.RAW.BUSD.USD.LASTUPDATE)
-            mutableCryptoList.add(crypto)
-
-            crypto = Usd(it.RAW.USDT.USD.FROMSYMBOL,
-                it.RAW.USDT.USD.PRICE,
-                it.RAW.USDT.USD.LASTUPDATE)
             mutableCryptoList.add(crypto)
 
             crypto = Usd(it.RAW.XRP.USD.FROMSYMBOL,
@@ -134,6 +126,10 @@ class CryptoListFragment : Fragment() {
             binding.recyclerView.layoutManager = LinearLayoutManager(context)
             val cryptoAdapter = CryptoListAdapter(mutableCryptoList)
             binding.recyclerView.adapter = cryptoAdapter
+        }
+
+        binding.btnToWallet.setOnClickListener {
+            findNavController().navigate(R.id.currencyChangeFragment)
         }
     }
 
