@@ -59,6 +59,8 @@ class CurrencyChangeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        cryptoViewModel.getAllCryptos()
+
         val ap = CryptoWallet(requireContext())
 
         CoroutineScope(Dispatchers.Main).launch {
@@ -66,8 +68,6 @@ class CurrencyChangeFragment : Fragment() {
             currentBtc = ap.readBtc()
             currentEth = ap.readEth()
         }
-
-        cryptoViewModel.getAllCryptos()
 
         val sortedCurrencySymbolsList = listOf("BTC", "ETH", "XRP", "USDC", "BNB",
             "DOGE", "LTC", "MATIC", "DYDX", "ADA", "ETC", "ATOM", "LINK").sorted()
@@ -86,7 +86,7 @@ class CurrencyChangeFragment : Fragment() {
         }
 
         binding.btnBuy.setOnClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
+            CoroutineScope(Dispatchers.Main).launch {
                 if(currentDollar >= binding.etBuy.text.toString().toDouble()) {
                     when(binding.spinnerCrypto.selectedItem.toString()) {
                         "BTC" -> {
@@ -113,6 +113,9 @@ class CurrencyChangeFragment : Fragment() {
                         .makeText(requireContext(), "Your money is not enough!", Toast.LENGTH_SHORT)
                         .show()
                 }
+                println(ap.readDollar())
+                println(ap.readBtc())
+                println(ap.readEth())
             }
         }
     }
