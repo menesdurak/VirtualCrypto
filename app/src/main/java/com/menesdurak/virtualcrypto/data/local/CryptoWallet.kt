@@ -10,9 +10,9 @@ import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.first
 
 class CryptoWallet(var context: Context) {
-    val Context.dataStore: DataStore<Preferences> by preferencesDataStore("wallet")
-
     companion object {
+        val Context.dataStore: DataStore<Preferences> by preferencesDataStore("wallet")
+
         val DOLLAR = doublePreferencesKey("DOLLAR")
         val BTC = doublePreferencesKey("BTC")
         val ETH = doublePreferencesKey("ETH")
