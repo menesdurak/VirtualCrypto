@@ -67,6 +67,7 @@ class CurrencyChangeFragment : Fragment() {
             currentDollar = ap.readDollar()
             currentBtc = ap.readBtc()
             currentEth = ap.readEth()
+            Toast.makeText(requireContext(), "$: $currentDollar btc: $currentBtc eth: $currentEth", Toast.LENGTH_SHORT).show()
         }
 
         val sortedCurrencySymbolsList = listOf("BTC", "ETH", "XRP", "USDC", "BNB",
@@ -97,6 +98,7 @@ class CurrencyChangeFragment : Fragment() {
                             ap.saveDollar(
                                 currentDollar - binding.etBuy.text.toString().toDouble()
                             )
+                            findNavController().navigate(R.id.cryptoListFragment)
                         }
                         "ETH" -> {
                             ap.saveEth(
@@ -106,6 +108,7 @@ class CurrencyChangeFragment : Fragment() {
                             ap.saveDollar(
                                 currentDollar - binding.etBuy.text.toString().toDouble()
                             )
+                            findNavController().navigate(R.id.cryptoListFragment)
                         }
                     }
                 } else {
