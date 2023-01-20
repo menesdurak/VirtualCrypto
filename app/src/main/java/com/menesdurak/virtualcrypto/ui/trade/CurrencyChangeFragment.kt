@@ -32,6 +32,14 @@ class CurrencyChangeFragment : Fragment() {
     private var currentDollar: Double = 0.0
     private var currentBtc: Double = 0.0
     private var currentEth: Double = 0.0
+    private var currentXrp: Double = 0.0
+    private var currentUsdc: Double = 0.0
+    private var currentBnb: Double = 0.0
+    private var currentDoge: Double = 0.0
+    private var currentLtc: Double = 0.0
+    private var currentMatic: Double = 0.0
+    private var currentDydx: Double = 0.0
+    private var currentAda: Double = 0.0
 
     private val retrofit: Retrofit by lazy {
         RetrofitClient.getInstance()
@@ -67,15 +75,30 @@ class CurrencyChangeFragment : Fragment() {
             currentDollar = ap.readDollar()
             currentBtc = ap.readBtc()
             currentEth = ap.readEth()
+            currentXrp = ap.readXrp()
+            currentUsdc = ap.readUsdc()
+            currentBnb = ap.readBnb()
+            currentDoge = ap.readDoge()
+            currentLtc = ap.readLtc()
+            currentMatic = ap.readMatic()
+            currentDydx = ap.readDydx()
+            currentAda = ap.readAda()
+
             binding.tvCurrencyAmount.text = currentDollar.toString()
             binding.tvBtcAmount.text = currentBtc.toString()
             binding.tvEthAmount.text = currentEth.toString()
-            Toast.makeText(requireContext(),
-                "$: $currentDollar btc: $currentBtc eth: $currentEth", Toast.LENGTH_SHORT).show()
+            binding.tvXrpAmount.text = currentXrp.toString()
+            binding.tvUsdcAmount.text = currentUsdc.toString()
+            binding.tvBnbAmount.text = currentBnb.toString()
+            binding.tvDogeAmount.text = currentDoge.toString()
+            binding.tvLtcAmount.text = currentLtc.toString()
+            binding.tvMaticAmount.text = currentMatic.toString()
+            binding.tvDydxAmount.text = currentDydx.toString()
+            binding.tvAdaAmount.text = currentAda.toString()
         }
 
         val sortedCurrencySymbolsList = listOf("BTC", "ETH", "XRP", "USDC", "BNB",
-            "DOGE", "LTC", "MATIC", "DYDX", "ADA", "ETC", "ATOM", "LINK").sorted()
+            "DOGE", "LTC", "MATIC", "DYDX", "ADA").sorted()
 
         ArrayAdapter(
             requireContext(),
@@ -97,7 +120,7 @@ class CurrencyChangeFragment : Fragment() {
                     when(binding.spinnerCrypto.selectedItem.toString()) {
                         "BTC" -> {
                             ap.saveBtc(
-                                enteredValue
+                                currentBtc + enteredValue
                                         *(1/cryptoViewModel.cryptoList.value!!.RAW.BTC.USD.PRICE.toDouble())
                             )
                             ap.saveDollar(
@@ -106,8 +129,80 @@ class CurrencyChangeFragment : Fragment() {
                         }
                         "ETH" -> {
                             ap.saveEth(
-                                enteredValue
+                                currentEth + enteredValue
                                         *(1/cryptoViewModel.cryptoList.value!!.RAW.ETH.USD.PRICE.toDouble())
+                            )
+                            ap.saveDollar(
+                                currentDollar - enteredValue
+                            )
+                        }
+                        "XRP" -> {
+                            ap.saveXrp(
+                                currentXrp + enteredValue
+                                        *(1/cryptoViewModel.cryptoList.value!!.RAW.XRP.USD.PRICE.toDouble())
+                            )
+                            ap.saveDollar(
+                                currentDollar - enteredValue
+                            )
+                        }
+                        "USDC" -> {
+                            ap.saveUsdc(
+                                currentUsdc + enteredValue
+                                        *(1/cryptoViewModel.cryptoList.value!!.RAW.USDC.USD.PRICE.toDouble())
+                            )
+                            ap.saveDollar(
+                                currentDollar - enteredValue
+                            )
+                        }
+                        "BNB" -> {
+                            ap.saveBnb(
+                                currentBnb + enteredValue
+                                        *(1/cryptoViewModel.cryptoList.value!!.RAW.BNB.USD.PRICE.toDouble())
+                            )
+                            ap.saveDollar(
+                                currentDollar - enteredValue
+                            )
+                        }
+                        "DOGE" -> {
+                            ap.saveDoge(
+                                currentDoge + enteredValue
+                                        *(1/cryptoViewModel.cryptoList.value!!.RAW.DOGE.USD.PRICE.toDouble())
+                            )
+                            ap.saveDollar(
+                                currentDollar - enteredValue
+                            )
+                        }
+                        "LTC" -> {
+                            ap.saveLtc(
+                                currentLtc + enteredValue
+                                        *(1/cryptoViewModel.cryptoList.value!!.RAW.LTC.USD.PRICE.toDouble())
+                            )
+                            ap.saveDollar(
+                                currentDollar - enteredValue
+                            )
+                        }
+                        "MATIC" -> {
+                            ap.saveMatic(
+                                currentMatic + enteredValue
+                                        *(1/cryptoViewModel.cryptoList.value!!.RAW.MATIC.USD.PRICE.toDouble())
+                            )
+                            ap.saveDollar(
+                                currentDollar - enteredValue
+                            )
+                        }
+                        "DYDX" -> {
+                            ap.saveDydx(
+                                currentDydx + enteredValue
+                                        *(1/cryptoViewModel.cryptoList.value!!.RAW.DYDX.USD.PRICE.toDouble())
+                            )
+                            ap.saveDollar(
+                                currentDollar - enteredValue
+                            )
+                        }
+                        "ADA" -> {
+                            ap.saveAda(
+                                currentAda + enteredValue
+                                        *(1/cryptoViewModel.cryptoList.value!!.RAW.ADA.USD.PRICE.toDouble())
                             )
                             ap.saveDollar(
                                 currentDollar - enteredValue
@@ -146,11 +241,115 @@ class CurrencyChangeFragment : Fragment() {
                             }
                         }
                         "ETH" -> {
-                            if (enteredValue - currentEth >= 0) {
+                            if (currentEth - enteredValue >= 0) {
                                 ap.saveEth(currentEth - enteredValue)
                                 ap.saveDollar(
                                     currentDollar + enteredValue
-                                            *(1/cryptoViewModel.cryptoList.value!!.RAW.ETH.USD.PRICE.toDouble()
+                                            *(cryptoViewModel.cryptoList.value!!.RAW.ETH.USD.PRICE.toDouble()
+                                            ))
+                            } else {
+                                Toast
+                                    .makeText(requireContext(), "Couldn't sell.", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+                        "XRP" -> {
+                            if (currentXrp - enteredValue >= 0) {
+                                ap.saveXrp(currentXrp - enteredValue)
+                                ap.saveDollar(
+                                    currentDollar + enteredValue
+                                            *(cryptoViewModel.cryptoList.value!!.RAW.XRP.USD.PRICE.toDouble()
+                                            ))
+                            } else {
+                                Toast
+                                    .makeText(requireContext(), "Couldn't sell.", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+                        "USDC" -> {
+                            if (currentUsdc - enteredValue >= 0) {
+                                ap.saveUsdc(currentUsdc - enteredValue)
+                                ap.saveDollar(
+                                    currentDollar + enteredValue
+                                            *(cryptoViewModel.cryptoList.value!!.RAW.USDC.USD.PRICE.toDouble()
+                                            ))
+                            } else {
+                                Toast
+                                    .makeText(requireContext(), "Couldn't sell.", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+                        "BNB" -> {
+                            if (currentBnb - enteredValue >= 0) {
+                                ap.saveBnb(currentBnb - enteredValue)
+                                ap.saveDollar(
+                                    currentDollar + enteredValue
+                                            *(cryptoViewModel.cryptoList.value!!.RAW.BNB.USD.PRICE.toDouble()
+                                            ))
+                            } else {
+                                Toast
+                                    .makeText(requireContext(), "Couldn't sell.", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+                        "DOGE" -> {
+                            if (currentDoge - enteredValue >= 0) {
+                                ap.saveDoge(currentDoge - enteredValue)
+                                ap.saveDollar(
+                                    currentDollar + enteredValue
+                                            *(cryptoViewModel.cryptoList.value!!.RAW.DOGE.USD.PRICE.toDouble()
+                                            ))
+                            } else {
+                                Toast
+                                    .makeText(requireContext(), "Couldn't sell.", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+                        "LTC" -> {
+                            if (currentLtc - enteredValue >= 0) {
+                                ap.saveLtc(currentLtc - enteredValue)
+                                ap.saveDollar(
+                                    currentDollar + enteredValue
+                                            *(cryptoViewModel.cryptoList.value!!.RAW.LTC.USD.PRICE.toDouble()
+                                            ))
+                            } else {
+                                Toast
+                                    .makeText(requireContext(), "Couldn't sell.", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+                        "MATIC" -> {
+                            if (currentMatic - enteredValue >= 0) {
+                                ap.saveMatic(currentMatic - enteredValue)
+                                ap.saveDollar(
+                                    currentDollar + enteredValue
+                                            *(cryptoViewModel.cryptoList.value!!.RAW.MATIC.USD.PRICE.toDouble()
+                                            ))
+                            } else {
+                                Toast
+                                    .makeText(requireContext(), "Couldn't sell.", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+                        "DYDX" -> {
+                            if (currentDydx - enteredValue >= 0) {
+                                ap.saveDydx(currentDydx - enteredValue)
+                                ap.saveDollar(
+                                    currentDollar + enteredValue
+                                            *(cryptoViewModel.cryptoList.value!!.RAW.DYDX.USD.PRICE.toDouble()
+                                            ))
+                            } else {
+                                Toast
+                                    .makeText(requireContext(), "Couldn't sell.", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+                        "ADA" -> {
+                            if (currentAda - enteredValue >= 0) {
+                                ap.saveAda(currentAda - enteredValue)
+                                ap.saveDollar(
+                                    currentDollar + enteredValue
+                                            *(cryptoViewModel.cryptoList.value!!.RAW.ADA.USD.PRICE.toDouble()
                                             ))
                             } else {
                                 Toast
