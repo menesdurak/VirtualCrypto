@@ -67,7 +67,11 @@ class CurrencyChangeFragment : Fragment() {
             currentDollar = ap.readDollar()
             currentBtc = ap.readBtc()
             currentEth = ap.readEth()
-            Toast.makeText(requireContext(), "$: $currentDollar btc: $currentBtc eth: $currentEth", Toast.LENGTH_SHORT).show()
+            binding.tvCurrencyAmount.text = currentDollar.toString()
+            binding.tvBtcAmount.text = currentBtc.toString()
+            binding.tvEthAmount.text = currentEth.toString()
+            Toast.makeText(requireContext(),
+                "$: $currentDollar btc: $currentBtc eth: $currentEth", Toast.LENGTH_SHORT).show()
         }
 
         val sortedCurrencySymbolsList = listOf("BTC", "ETH", "XRP", "USDC", "BNB",
@@ -88,37 +92,44 @@ class CurrencyChangeFragment : Fragment() {
 
         binding.btnBuy.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
-                if(currentDollar >= binding.etBuy.text.toString().toDouble()) {
+                val enteredValue = binding.etBuy.text.toString().toDouble()
+                if(currentDollar >= enteredValue && enteredValue > 0.0) {
                     when(binding.spinnerCrypto.selectedItem.toString()) {
                         "BTC" -> {
                             ap.saveBtc(
-                                binding.etBuy.text.toString().toDouble()
+                                enteredValue
                                         *(1/cryptoViewModel.cryptoList.value!!.RAW.BTC.USD.PRICE.toDouble())
                             )
                             ap.saveDollar(
-                                currentDollar - binding.etBuy.text.toString().toDouble()
+                                currentDollar - enteredValue
                             )
-                            findNavController().navigate(R.id.cryptoListFragment)
                         }
                         "ETH" -> {
                             ap.saveEth(
-                                binding.etBuy.text.toString().toDouble()
+                                enteredValue
                                         *(1/cryptoViewModel.cryptoList.value!!.RAW.ETH.USD.PRICE.toDouble())
                             )
                             ap.saveDollar(
-                                currentDollar - binding.etBuy.text.toString().toDouble()
+                                currentDollar - enteredValue
                             )
-                            findNavController().navigate(R.id.cryptoListFragment)
                         }
                     }
-                } else {
+                    findNavController().navigate(R.id.cryptoListFragment)
+                } else if (currentDollar < enteredValue) {
                     Toast
                         .makeText(requireContext(), "Your money is not enough!", Toast.LENGTH_SHORT)
                         .show()
+                } else {
+                    Toast
+                        .makeText(requireContext(), "Couldn't convert", Toast.LENGTH_SHORT)
+                        .show()
                 }
-                println(ap.readDollar())
-                println(ap.readBtc())
-                println(ap.readEth())
+            }
+        }
+
+        binding.btnSell.setOnClickListener {
+            CoroutineScope(Dispatchers.Main).launch {
+
             }
         }
     }
