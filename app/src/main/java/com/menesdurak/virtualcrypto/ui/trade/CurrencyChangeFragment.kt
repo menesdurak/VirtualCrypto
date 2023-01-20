@@ -121,7 +121,7 @@ class CurrencyChangeFragment : Fragment() {
                         .show()
                 } else {
                     Toast
-                        .makeText(requireContext(), "Couldn't convert", Toast.LENGTH_SHORT)
+                        .makeText(requireContext(), "Couldn't buy.", Toast.LENGTH_SHORT)
                         .show()
                 }
             }
@@ -129,7 +129,38 @@ class CurrencyChangeFragment : Fragment() {
 
         binding.btnSell.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
-
+                val enteredValue = binding.etBuy.text.toString().toDouble()
+                if(enteredValue > 0.0) {
+                    when(binding.spinnerCrypto.selectedItem.toString()) {
+                        "BTC" -> {
+                            if (currentBtc - enteredValue >= 0) {
+                                ap.saveBtc(currentBtc - enteredValue)
+                                ap.saveDollar(
+                                    currentDollar + enteredValue
+                                            *(cryptoViewModel.cryptoList.value!!.RAW.BTC.USD.PRICE.toDouble())
+                                )
+                            } else {
+                                Toast
+                                    .makeText(requireContext(), "Couldn't sell.", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+                        "ETH" -> {
+                            if (enteredValue - currentEth >= 0) {
+                                ap.saveEth(currentEth - enteredValue)
+                                ap.saveDollar(
+                                    currentDollar + enteredValue
+                                            *(1/cryptoViewModel.cryptoList.value!!.RAW.ETH.USD.PRICE.toDouble()
+                                            ))
+                            } else {
+                                Toast
+                                    .makeText(requireContext(), "Couldn't sell.", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+                    }
+                    findNavController().navigate(R.id.cryptoListFragment)
+                }
             }
         }
     }
