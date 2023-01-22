@@ -294,10 +294,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/etBuy"
-        app:layout_constraintBottom_toBottomOf="@+id/etBuy"
+        app:layout_constraintBottom_toTopOf="@+id/tvAmountSign"
         app:layout_constraintTop_toTopOf="@+id/etBuy"
-        android:text="$"
-        android:textSize="16sp"/>
+        android:text="$ for Buy"
+        android:textSize="16sp"
+        android:layout_margin="4dp"/>
+    <TextView
+        android:id="@+id/tvAmountSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/etBuy"
+        app:layout_constraintTop_toBottomOf="@+id/tvMoneySign"
+        app:layout_constraintBottom_toBottomOf="@+id/etBuy"
+        android:text="Amount for Sell"
+        android:textSize="16sp"
+        android:layout_margin="4dp"/>
 
     <Spinner
         android:id="@+id/spinnerCrypto"
