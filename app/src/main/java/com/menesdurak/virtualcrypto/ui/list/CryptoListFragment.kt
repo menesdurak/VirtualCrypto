@@ -48,6 +48,7 @@ class CryptoListFragment : Fragment() {
     ): View {
         _binding = FragmentCryptoListBinding.inflate(inflater, container, false)
         val view = binding.root
+
         return view
     }
 

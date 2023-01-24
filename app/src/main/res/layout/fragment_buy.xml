@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditText
+        android:id="@+id/etBuy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="20sp"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerCrypto"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuy"
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:id="@+id/tvAmountSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/etBuy"
+        app:layout_constraintTop_toTopOf="@+id/etBuy"
+        app:layout_constraintBottom_toBottomOf="@+id/etBuy"
+        android:text="$"
+        android:textSize="16sp"
+        android:layout_margin="4dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerCrypto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/etBuy"
+        app:layout_constraintBottom_toBottomOf="@+id/etBuy"
+        app:layout_constraintTop_toTopOf="@+id/etBuy"
+        android:layout_margin="16dp"/>
+
+    <Button
+        android:id="@+id/btnBuy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
