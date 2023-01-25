@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.trade.CurrencyChangeFragment">
+    tools:context=".ui.trade.CurrencyChangeFragment"
+    android:background="#413F42">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -24,7 +25,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvCurrencyAmount"
@@ -37,7 +39,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvCurrencySign"
@@ -48,7 +51,8 @@
         android:text="$"
         app:layout_constraintBottom_toBottomOf="@+id/tvCurrencyAmount"
         app:layout_constraintStart_toEndOf="@+id/tvCurrencyAmount"
-        app:layout_constraintTop_toTopOf="@+id/tvCurrencyAmount" />
+        app:layout_constraintTop_toTopOf="@+id/tvCurrencyAmount"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvBtc"
@@ -60,7 +64,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCurrency" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrency"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvBtcAmount"
@@ -72,7 +77,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/tvCurrency" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrency"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvEth"
@@ -84,7 +90,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBtc" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBtc"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvEthAmount"
@@ -97,7 +104,8 @@
         app:layout_constraintBottom_toBottomOf="@id/tvEth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvEth" />
+        app:layout_constraintTop_toTopOf="@+id/tvEth"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvXrp"
@@ -109,7 +117,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEth" />
+        app:layout_constraintTop_toBottomOf="@+id/tvEth"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvXrpAmount"
@@ -122,7 +131,8 @@
         app:layout_constraintBottom_toBottomOf="@id/tvXrp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvXrp" />
+        app:layout_constraintTop_toTopOf="@+id/tvXrp"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvUsdc"
@@ -134,7 +144,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvXrp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvXrp"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvUsdcAmount"
@@ -147,7 +158,8 @@
         app:layout_constraintBottom_toBottomOf="@id/tvUsdc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvUsdc" />
+        app:layout_constraintTop_toTopOf="@+id/tvUsdc"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvBnb"
@@ -159,7 +171,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvUsdc" />
+        app:layout_constraintTop_toBottomOf="@+id/tvUsdc"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvBnbAmount"
@@ -172,7 +185,8 @@
         app:layout_constraintBottom_toBottomOf="@id/tvBnb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvBnb" />
+        app:layout_constraintTop_toTopOf="@+id/tvBnb"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvDoge"
@@ -184,7 +198,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBnb" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBnb"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvDogeAmount"
@@ -197,7 +212,8 @@
         app:layout_constraintBottom_toBottomOf="@id/tvDoge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvDoge" />
+        app:layout_constraintTop_toTopOf="@+id/tvDoge"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvLtc"
@@ -209,7 +225,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDoge" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDoge"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvLtcAmount"
@@ -222,7 +239,8 @@
         app:layout_constraintBottom_toBottomOf="@id/tvLtc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvLtc" />
+        app:layout_constraintTop_toTopOf="@+id/tvLtc"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvMatic"
@@ -234,7 +252,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLtc" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLtc"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvMaticAmount"
@@ -247,7 +266,8 @@
         app:layout_constraintBottom_toBottomOf="@id/tvMatic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvMatic" />
+        app:layout_constraintTop_toTopOf="@+id/tvMatic"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvDydx"
@@ -259,7 +279,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMatic" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMatic"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvDydxAmount"
@@ -272,7 +293,8 @@
         app:layout_constraintBottom_toBottomOf="@id/tvDydx"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvDydx" />
+        app:layout_constraintTop_toTopOf="@+id/tvDydx"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvAda"
@@ -284,7 +306,8 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDydx" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDydx"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvAdaAmount"
@@ -297,7 +320,8 @@
         app:layout_constraintBottom_toBottomOf="@id/tvAda"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/tvAda" />
+        app:layout_constraintTop_toTopOf="@+id/tvAda"
+        android:textColor="@color/textTradeColor"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
@@ -313,7 +337,7 @@
         android:id="@+id/btnToList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="16dp"
         android:text="To Crypto List"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
