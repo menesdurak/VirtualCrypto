@@ -12,6 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabTextColor="@color/textTradeColor"
+        app:tabSelectedTextColor="@color/teal_200"
+        app:tabIndicatorAnimationMode="elastic"
         android:background="#413F42"/>
 
     <androidx.viewpager2.widget.ViewPager2
