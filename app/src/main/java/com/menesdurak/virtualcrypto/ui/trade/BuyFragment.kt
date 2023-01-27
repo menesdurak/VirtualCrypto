@@ -1,6 +1,5 @@
 package com.menesdurak.virtualcrypto.ui.trade
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +9,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.menesdurak.virtualcrypto.R
 import com.menesdurak.virtualcrypto.data.local.CryptoWallet
 import com.menesdurak.virtualcrypto.data.remote.RetrofitClient
 import com.menesdurak.virtualcrypto.data.remote.api.CryptoApi
 import com.menesdurak.virtualcrypto.data.repository.CryptoRepository
 import com.menesdurak.virtualcrypto.databinding.FragmentBuyBinding
-import com.menesdurak.virtualcrypto.databinding.FragmentCryptoListBinding
 import com.menesdurak.virtualcrypto.ui.viewmodel.CryptoViewModel
 import com.menesdurak.virtualcrypto.ui.viewmodel.ViewModelFactory
 import kotlinx.coroutines.CoroutineScope
@@ -85,10 +84,10 @@ class BuyFragment: Fragment() {
 
         val sortedCurrencySymbolsList = listOf("BTC", "ETH", "XRP", "USDC", "BNB",
             "DOGE", "LTC", "MATIC", "DYDX", "ADA").sorted()
-
+        //android.R.layout.simple_spinner_item
         ArrayAdapter(
             requireContext(),
-            android.R.layout.simple_spinner_item,
+            R.layout.my_selected_item,
             sortedCurrencySymbolsList
         ) .also {
             it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
