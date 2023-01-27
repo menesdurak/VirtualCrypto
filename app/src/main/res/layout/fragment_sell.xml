@@ -14,7 +14,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/spinnerCrypto"
         app:layout_constraintBottom_toTopOf="@+id/btnSell"
-        android:layout_margin="16dp"/>
+        android:layout_margin="16dp"
+        android:textColor="@color/textTradeColor"/>
 
     <TextView
         android:id="@+id/tvAmountSign"
@@ -25,7 +26,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/etBuy"
         android:text="Amount"
         android:textSize="16sp"
-        android:layout_margin="4dp"/>
+        android:layout_margin="4dp"
+        android:textColor="@color/textTradeColor"/>
 
     <Spinner
         android:id="@+id/spinnerCrypto"
@@ -37,13 +39,15 @@
         app:layout_constraintStart_toEndOf="@+id/etBuy"
         app:layout_constraintBottom_toBottomOf="@+id/etBuy"
         app:layout_constraintTop_toTopOf="@+id/etBuy"
-        android:layout_margin="16dp"/>
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/textTradeColor"/>
 
     <Button
         android:id="@+id/btnSell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sell"
+        android:backgroundTint="#F55050"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
