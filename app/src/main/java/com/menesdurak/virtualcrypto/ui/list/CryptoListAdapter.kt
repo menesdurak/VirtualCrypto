@@ -28,10 +28,12 @@ class CryptoListAdapter(private val cryptoList: List<Usd>) :
         holder.itemView.findViewById<TextView>(R.id.rowPrice).text =
             cryptoList[position].PRICE.toString()
 
-        //Even number of layout elements background set to gray
         if (position % 2 == 0) {
             holder.itemView.findViewById<LinearLayout>(R.id.rowLayout)
-                .setBackgroundColor(Color.parseColor("#f0f0f0"))
+                .setBackgroundColor(Color.parseColor("#1f1f1f"))
+        } else {
+            holder.itemView.findViewById<LinearLayout>(R.id.rowLayout)
+                .setBackgroundColor(Color.parseColor("#2f2f2f"))
         }
     }
 
