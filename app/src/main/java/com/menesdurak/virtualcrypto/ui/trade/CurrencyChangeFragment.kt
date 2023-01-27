@@ -1,13 +1,9 @@
 package com.menesdurak.virtualcrypto.ui.trade
 
 import android.os.Bundle
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.*
 import androidx.navigation.fragment.findNavController
 import com.menesdurak.virtualcrypto.R
@@ -16,9 +12,6 @@ import com.menesdurak.virtualcrypto.data.remote.RetrofitClient
 import com.menesdurak.virtualcrypto.data.remote.api.CryptoApi
 import com.menesdurak.virtualcrypto.data.repository.CryptoRepository
 import com.menesdurak.virtualcrypto.databinding.FragmentCurrencyChange2Binding
-import com.menesdurak.virtualcrypto.databinding.FragmentCurrencyChangeBinding
-import com.menesdurak.virtualcrypto.model.Usd
-import com.menesdurak.virtualcrypto.ui.list.CryptoListFragment
 import com.menesdurak.virtualcrypto.ui.viewmodel.CryptoViewModel
 import com.menesdurak.virtualcrypto.ui.viewmodel.ViewModelFactory
 import kotlinx.coroutines.CoroutineScope
